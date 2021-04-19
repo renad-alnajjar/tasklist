@@ -7,7 +7,7 @@
 </head>
  <body>
   
-    <h1>  <?php echo $task?> </h1>
+    <h1>{{$task->title}}</h1>
           
     
      

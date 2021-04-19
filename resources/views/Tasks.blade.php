@@ -7,10 +7,9 @@
 </head>
  <body>
       <ul>
-      <?php foreach($tasks as $Key=> $task):?> 
-          
-      <li> <a href="{{'show/'.$Key}}"><?php echo $task?></a> </li>
-      <?php endforeach;?>
+  @foreach($tasks as $task) 
+      <li><a href="tasks/show/{{$task->id}}">{{$task->title}}</a>   </li>
+  @endforeach
       </ul>
         </body> 
       </html>  
