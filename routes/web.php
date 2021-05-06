@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Models\Task;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('todo', function () {
- $tasks=DB::table('tasks')->get();
-   return view('Todo',compact('tasks'));
+ // $tasks=DB::table('tasks')->get();
+$tasks= Task::all();
+dd($tasks);
+  return view('Todo',compact('tasks'));
 });
 /*
 Route::get('/tasks', function () {
@@ -33,10 +36,13 @@ Route::get('/tasks', function () {
 
    Route::post('store', function (Request $request) {
 
-   DB::table('tasks') ->insert([ 
+   /*   DB::table('tasks') ->insert([    
       'title'=>$request->title  
     ]);
-     
+    */
+    $task= new Task(); 
+$task->title=$request->title;
+$task->save();
      return redirect()->back();
 });
 Route::get('/todo', function () {
@@ -48,4 +54,9 @@ return view('Todo',compact('tasks'));
 
 });
 
+Route::post('todo/{id}', function($id) {
+   $task =Task::find($id);
+  $task->delete();  
+  return redirect()->back();
  
+ });

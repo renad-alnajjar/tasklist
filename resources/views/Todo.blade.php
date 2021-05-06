@@ -52,10 +52,14 @@
 
                                         <!-- Task Delete Button -->
                                         <td>
-                                                 <button type="submit" class="btn btn-danger">
+                                            <form action="todo/{{$task->id}}" method="POST">
+                                            @csrf 
+
+                                                <button  type="submit" class="btn btn-danger">
                                                     <i class="fa fa-btn fa-trash"></i>Delete
                                                 </button>
-                                         </td>
+                                            </form>
+                                        </td>
                                     </tr>
                                   
                             @endforeach
